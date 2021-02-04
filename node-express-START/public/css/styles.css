@@ -11,7 +11,7 @@ body {
     box-sizing: border-box;
   }
   
-  .container {
+  .container-signup, .container-signin {
     margin: 100px auto;
     max-width: 350px;
     /* background: white; */
@@ -85,3 +85,10 @@ body {
   }
   /*END OF SIGNUP FORM */
   
+  /* INDEX CSS */
+  .a-buttons
+  {
+    display: flex;
+    justify-content: space-around;
+  }
+  /* END OF INDEX CSS */
