@@ -2,14 +2,19 @@
 // ES Modules Browsers export function import somewhere else
 // Bundler
 // Node Comment.js Dont work in the Browser NODE: module.exports = const, functions
-
+require('dotenv').config()
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 3000;
+// .env containes environmental vars never upload to github...
+const PORT = process.env.PORT || 5000;
+const staticOptions = {
+    dotfiles:'ignore',
+    extensions: ['htm', 'html']
+}
 
 //Setup express 
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(__dirname, '../public'),staticOptions))
 
 //API FOR EMPLOYEES
 //baseURL api/v1/employees
@@ -19,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../public')))
 // http method
 //app.get(endpoint, (cb)) cb 3 params req, res, next
 app.get('/api/v1/employees', (req, res, next)=>{
-    res.send({name:"Pavs"})
+    res.send("EMPLOYEE MANAGER API")
 }) 
 
 //public 404 page not found
