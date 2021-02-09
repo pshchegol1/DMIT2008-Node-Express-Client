@@ -5,13 +5,28 @@
 require('dotenv').config()
 const express = require('express');
 const path = require('path');
+
 const app = express();
 // .env containes environmental vars never upload to github...
 const PORT = process.env.PORT || 5000;
-const staticOptions = {
+
+//access to Request Body
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+
+/* const staticOptions = {
     dotfiles:'ignore',
     extensions: ['htm', 'html']
-}
+} */
+
+
+// Middleware Serving Static pages from client directory
+app.use(
+    express.static(path.join(__dirname, "../public"),{
+        dotfiles: "ignore",
+        extensions: ["html, htm"],
+    })
+);
 
 //Setup express 
 app.use(express.static(path.join(__dirname, '../public'),staticOptions))
@@ -27,13 +42,20 @@ app.get('/api/v1/employees', (req, res, next)=>{
     res.send("EMPLOYEE MANAGER API")
 }) 
 
+
+// Routing Middleware Listen POST request Route /login
+app.post('/login', (req, res)=>{
+
+    res.sendFile(path.join(__dirname, '../public/dashboard.html'));
+})
+
 //public 404 page not found
 // Sending a specific file 
 app.use((req, res, next)=>{
-    res.sendFile(path.join(__dirname, '../public/404.html'))
+    res.sendFile(path.join(__dirname, '../public/404.html'));
 })
 
 app.listen('3000', () =>{
-    console.log(`server is running ON------ http://localhost:${PORT}`)
+    console.log(`server is running ON------ http://localhost:${PORT}`);
 })
 
