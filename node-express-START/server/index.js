@@ -14,19 +14,19 @@ const PORT = process.env.PORT || 5000;
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 
-/* const staticOptions = {
+const staticOptions = {
     dotfiles:'ignore',
     extensions: ['htm', 'html']
-} */
+}
 
 
-// Middleware Serving Static pages from client directory
-app.use(
+// Middleware Serving Static pages from client directory //!UNCOMMENT IF NEEDED
+/* app.use(
     express.static(path.join(__dirname, "../public"),{
         dotfiles: "ignore",
         extensions: ["html, htm"],
     })
-);
+); */
 
 //Setup express 
 app.use(express.static(path.join(__dirname, '../public'),staticOptions))
@@ -55,7 +55,7 @@ app.use((req, res, next)=>{
     res.sendFile(path.join(__dirname, '../public/404.html'));
 })
 
-app.listen('3000', () =>{
+app.listen(PORT, () =>{
     console.log(`server is running ON------ http://localhost:${PORT}`);
 })
 

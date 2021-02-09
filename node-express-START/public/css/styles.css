@@ -92,3 +92,27 @@ body {
     justify-content: space-around;
   }
   /* END OF INDEX CSS */
+
+  /* 
+    |||||||||||| body-404 error CSS |||||||||||||||||||||||||||||||||||
+  */
+  .body-404
+  {
+    background: linear-gradient(-45deg, #cf9906, #eff16e);
+    background-size: 400% 400%;
+    animation: gradient 1s ease infinite;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  /* 
+    |||||||||||| END OF body-404 error CSS |||||||||||||||||||||||||||||
+  */

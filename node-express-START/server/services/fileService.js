@@ -19,7 +19,7 @@ const getFileContents = (filePath) =>{
 
 const writeFileContents = (filePath, data) =>{
 
-    const dummyData = {username:"test", email:"test@yahoo.com", password:"test"}
+    const dummyData = {username:"pogoreliy", email:"pogoreliy@yahoo.com", password:"pogoreliy"}
     let fileContents = fs.readFileSync(path.join(__dirname, filePath))
     fileContents = JSON.parse(fileContents)
     fileContents.push(dummyData)
